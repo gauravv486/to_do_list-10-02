@@ -93,6 +93,7 @@ body {
 }
 
 #deletebtn {
+    margin: 10px;
     height: 30px;
     padding: 10px;
     margin-right: 10px;
