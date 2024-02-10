@@ -17,7 +17,7 @@ function createlement() {
         editButtonElement.id = "editbtn";
         editButtonElement.textContent = "Edit";
         editButtonElement.addEventListener("click", function () {
-            editclick(editButtonElement);
+            editclick(editButtonElement,savebutton);
         });
 
         let deleteButtonElement = document.createElement("button");
@@ -27,21 +27,41 @@ function createlement() {
             deleteclick(deleteButtonElement);
         });
 
+        let savebutton = document.createElement("button");
+        savebutton.id = "deletebtn";
+        savebutton.textContent = "save";
+        savebutton.style.display="none";
+        savebutton.addEventListener("click", function () {
+            alert("Task edited successfully");
+            saveclick(editButtonElement,savebutton);
+
+        });
+
         element.appendChild(taskInputElement);
         element.appendChild(editButtonElement);
         element.appendChild(deleteButtonElement);
+        element.appendChild(savebutton);
 
         taskcontent.appendChild(element);
         taskInput.value = "";
     }
 }
 
+
 function deleteclick(deleteButton) {
     deleteButton.parentElement.remove();
 }
 
-function editclick(editButton) {
+function editclick(editButton,savebutton) {
     let taskElement = editButton.parentElement.querySelector("#taskelement");
     taskElement.readOnly = false;
     taskElement.focus();
+    editButton.style.display = "none";
+    savebutton.style.display = "flex";
 }
+
+function saveclick(editbtn,savebutton){
+    editbtn.style.display="flex";
+    savebutton.style.display="none";
+}
+
