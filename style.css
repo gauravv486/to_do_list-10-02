@@ -10,6 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 10%;
+    background-color: rgba(127, 255, 234, 0.288);
 }
 
 #To-Do-list {
