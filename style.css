@@ -15,7 +15,7 @@ body {
 #To-Do-list {
     background-color: rgba(46, 79, 76, 0.292);
     height: auto;
-    width: 50vw;
+    width: 60%;
     border-radius: 50px;
     align-items: center;
     max-width: auto;
@@ -73,7 +73,7 @@ body {
 #taskelement {
     flex: 1;
     background: transparent;
-    width: 40vw;
+    width: 40%;
     border-radius: 20px;
     border: hidden;
     outline: none;
@@ -100,4 +100,13 @@ body {
     background-color: rgba(43, 211, 226, 0.32);
     border-radius: 6px;
     
+}
+@media only screen and (max-width: 600px) {
+    
+    #To-Do-list{
+        margin: 0;
+        /* height: 100%; */
+        width: 100%;
+    
+  }
 }
