@@ -17,7 +17,7 @@ function createlement() {
         editButtonElement.id = "editbtn";
         editButtonElement.textContent = "Edit";
         editButtonElement.addEventListener("click", function () {
-            editclick(editButtonElement,savebutton);
+            editclick(editButtonElement,savebutton,deleteButtonElement);
         });
 
         let deleteButtonElement = document.createElement("button");
@@ -32,8 +32,7 @@ function createlement() {
         savebutton.textContent = "save";
         savebutton.style.display="none";
         savebutton.addEventListener("click", function () {
-            // alert("Task edited successfully");
-            saveclick(editButtonElement,savebutton);
+            saveclick(editButtonElement,savebutton,deleteButtonElement);
 
         });
 
@@ -51,18 +50,18 @@ function createlement() {
 function deleteclick(deleteButton) {
     deleteButton.parentElement.remove();
 }
-// var editbuttons=document.querySelectorAll("#editbtn");
 
-function editclick(editButton,savebutton) {
+function editclick(editButton,savebutton,deleteButton) {
     let currentbutton=editButton.parentElement.querySelector("#editbtn");
-    // let savecurrentbutton=editButton.parentElement.querySelector('#deletebtn');
-
     let taskElement = editButton.parentElement.querySelector("#taskelement");
     let editbuttons=document.querySelectorAll("#editbtn");
+    let inputbutton=document.querySelectorAll("#taskelement");
+
+
+
 
     editbuttons.forEach(element => {
         if(element!==currentbutton){
-            // element.disabled="true";
             element.style.display="none";
         }
         else {
@@ -70,20 +69,31 @@ function editclick(editButton,savebutton) {
         }
     });
 
-    taskElement.readOnly = false;
+    inputbutton.forEach(element =>{
+        if(element!=taskElement)
+        {
+            element.readOnly=true;
+        }
+        else{
+            taskElement.readOnly = false;
+        }
+    })
+
+    // taskElement.readOnly = false;
     taskElement.focus();
     editButton.style.display = "none";
+    deleteButton.style.display="none";
     savebutton.style.display = "flex";
 } 
 
 
-function saveclick(editbtn,savebutton,){
+function saveclick(editbtn,savebutton,deleteButton){
 
     let editbtnshow=document.querySelectorAll("#editbtn");
     editbtnshow.forEach(element =>{
-        // element.removeAttribute("disabled");
         element.style.display="flex";
     })
     editbtn.style.display="flex";
     savebutton.style.display="none";
+    deleteButton.style.display="flex";
 }
