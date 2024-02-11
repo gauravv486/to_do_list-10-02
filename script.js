@@ -32,7 +32,7 @@ function createlement() {
         savebutton.textContent = "save";
         savebutton.style.display="none";
         savebutton.addEventListener("click", function () {
-            alert("Task edited successfully");
+            // alert("Task edited successfully");
             saveclick(editButtonElement,savebutton);
 
         });
@@ -51,17 +51,39 @@ function createlement() {
 function deleteclick(deleteButton) {
     deleteButton.parentElement.remove();
 }
+// var editbuttons=document.querySelectorAll("#editbtn");
 
 function editclick(editButton,savebutton) {
+    let currentbutton=editButton.parentElement.querySelector("#editbtn");
+    // let savecurrentbutton=editButton.parentElement.querySelector('#deletebtn');
+
     let taskElement = editButton.parentElement.querySelector("#taskelement");
+    let editbuttons=document.querySelectorAll("#editbtn");
+
+    editbuttons.forEach(element => {
+        if(element!==currentbutton){
+            // element.disabled="true";
+            element.style.display="none";
+        }
+        else {
+            currentbutton.focus();
+        }
+    });
+
     taskElement.readOnly = false;
     taskElement.focus();
     editButton.style.display = "none";
     savebutton.style.display = "flex";
-}
+} 
 
-function saveclick(editbtn,savebutton){
+
+function saveclick(editbtn,savebutton,){
+
+    let editbtnshow=document.querySelectorAll("#editbtn");
+    editbtnshow.forEach(element =>{
+        // element.removeAttribute("disabled");
+        element.style.display="flex";
+    })
     editbtn.style.display="flex";
     savebutton.style.display="none";
 }
-
